@@ -5,37 +5,59 @@ import { supabase } from '../supabaseClient'
 export const AuthContext = createContext(null);
 export function Authprovider({ children }) {
     const [user, setuser] = useState(null);
-    const [loading, setloading] = useState(false);
+    const [loading, setloading] = useState(true);
     const [error, seterror] = useState('')
     async function sign_Up(email, password) {
-        console.log(email,password);
-        
+        console.log(email, password);
+
         const { data, error } = await supabase.auth.signUp({
-           email:email,
-           password:password,
+            email,
+            password,
         })
         if (error) throw error;
-        console.log(data.email,data.password);
-        
+        console.log(data);
+
         return data
     }
 
+
+    async function sign_In(email, password) {
+        const { data } = await supabase.auth.signInWithPassword({
+            email,
+            password
+        })
+    }
+
+
+    async function sign_Out() {
+        setloading(true);
+        try {
+            const { error } = await supabase.auth.signOut();
+            if (error) throw error;
+        } catch (err) {
+            seterror(err.message);
+        } finally {
+            setloading(false);
+        }
+    }
+
+
     useEffect(() => {
         async function get_Session() {
-          try {
-              const { data: { session } } = await supabase.auth.getSession();
-             setuser(session?.user ?? null)
-          } catch (error) {
-            seterror(error)
-          }finally{
-            setloading(false)
-          }
+            try {
+                const { data: { session } } = await supabase.auth.getSession();
+                setuser(session?.user ?? null)
+            } catch (error) {
+                seterror(error)
+            } finally {
+                setloading(false)
+            }
         }
         get_Session()
 
-        const {data: { subscription },} = supabase.auth.onAuthStateChange((_event, session) => {
-                setuser(session?.user ?? null);
-            }
+        const { data: { subscription }, } = supabase.auth.onAuthStateChange((_event, session) => {
+            setuser(session?.user ?? null);
+        }
         );
 
         return () => subscription.unsubscribe();
@@ -45,6 +67,8 @@ export function Authprovider({ children }) {
     return (
         <AuthContext.Provider value={{
             sign_Up,
+            sign_In,
+            sign_Out,
             loading,
             setloading,
             user,

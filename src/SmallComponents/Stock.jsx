@@ -5,7 +5,7 @@ function Stock() {
   const { inStock, toggleInStock } = useContext(FilterContext);
 
   return (
-    <div className="mt-5 max-w-sm">
+    <div className="mt-5 max-w-sm px-4">
       <label 
         onClick={toggleInStock}
         className={`
