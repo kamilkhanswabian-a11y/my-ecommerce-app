@@ -20,7 +20,7 @@ function Whislistpage() {
               <div style={{ width: '64px', height: '64px' }} className="bg-gray-50 rounded-lg p-1 flex items-center justify-center flex-shrink-0">
                 <img 
                   style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} 
-                  src={item.thumbnail} 
+                  src={item.images[0]} 
                   alt={item.title} 
                   className="max-h-full max-w-full object-contain" 
                 />

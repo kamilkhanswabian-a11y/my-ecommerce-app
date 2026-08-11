@@ -18,9 +18,9 @@ function Router() {
                 <Route path="/" element={<Home />} />
                 <Route path="/products" element={<Products />} />
                                           {/* {<Protected Routes */}
+                <Route path="/Profile" element={<Profile />} />
                                                   
                 <Route element={<ProtectedLayout />}>
-                <Route path="/Profile" element={<Profile />} />
                 <Route path="/cart" element={<Cartpage/>} />
                 <Route path="/whislist" element={<Whislistpage/>} />
                 <Route path="/Detail/:id" element={<Detail/>} />

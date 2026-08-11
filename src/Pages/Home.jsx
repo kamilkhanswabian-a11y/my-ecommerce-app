@@ -1,14 +1,19 @@
 import React from 'react'
 import Slider from '../Components/Slider'
 import Navbar from '../Components/Navbar'
-import Card from '../Components/Card'
-// import FeaturedProducts from '../SmallComponents/FeaturedProducts'
+import LogoMarquee from '../Components/Logo_Marquee'
+import FeaturedProducts from '../SmallComponents/FeaturedProducts'
+import Review from '../SmallComponents/Review'
+import Footer from '../Components/Footer'
 function Home() {
   return (
     <div>
-       <Navbar></Navbar>
+      <Navbar></Navbar>
       <Slider></Slider>
-      {/* <FeaturedProducts/> */}
+      <LogoMarquee></LogoMarquee>
+      <FeaturedProducts/>
+      <Review></Review>
+      <Footer/>
     </div>
   )
 }

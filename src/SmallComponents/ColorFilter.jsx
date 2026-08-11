@@ -36,7 +36,7 @@ function ColorFilter() {
               onClick={() => toggleColor(color)}
               className={`relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 transition-all duration-200 hover:scale-110 ${
                 isSelected 
-                  ? 'border-black ring-2 ring-black ring-offset-2' 
+                  ? 'border-black  ring-black ring-offset-2' 
                   : 'border-gray-200 hover:border-gray-400'
               }`}
               style={{ backgroundColor: color }}

@@ -53,7 +53,7 @@ function Category() {
                   type="checkbox"
                   onChange={() => toggleCategory(category)}
                   checked={isChecked}
-                  className="h-4 w-4 cursor-pointer rounded border-gray-300 text-black transition-colors focus:ring-2 focus:ring-black focus:ring-offset-2"
+                  className="h-4 w-4 cursor-pointer rounded border-gray-300 text-black "
                 />
                 <span className="text-base">{icon}</span>
                 <span className={`text-sm font-medium capitalize ${

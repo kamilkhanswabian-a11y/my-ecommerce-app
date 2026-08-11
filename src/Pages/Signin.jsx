@@ -1,17 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
-
+import { useNavigate,Link } from "react-router-dom";
+import ModernSpinner from '../SmallComponents/Spinner';
 function Signin() {
-  const {sign_In} = useContext(AuthContext)
+  const {signIn,loading} = useContext(AuthContext)
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    sign_In(email,password)
+    await signIn(email,password);
+    navigate("/")
   };
 
+     if(loading) return (<ModernSpinner></ModernSpinner>)
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
       {/* Main Container Card */}
@@ -81,10 +86,13 @@ function Signin() {
 
           {/* Submit Button */}
           <button
+            
             type="submit"
             className="w-full py-3.5 px-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-emerald-500/20 transition duration-200 active:scale-[0.98]"
           >
+         
             Sign In
+          
           </button>
         </form>
 
@@ -125,9 +133,9 @@ function Signin() {
         {/* Footer Link */}
         <p className="text-center text-sm text-slate-400">
           Don't have an account?{' '}
-          <a href="#signup" className="font-semibold text-emerald-400 hover:text-emerald-300 hover:underline transition">
+          <Link to="/Sign-up" className="font-semibold text-emerald-400 hover:text-emerald-300 hover:underline transition">
             Sign up
-          </a>
+          </Link>
         </p>
       </div>
     </div>

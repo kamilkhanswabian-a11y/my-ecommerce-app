@@ -1,99 +1,155 @@
-import { ArrowUp } from "lucide-react";
+import {
+  Heart
+} from "lucide-react";
+
+import { Link } from "react-router-dom";
 
 export default function Footer() {
-  // Quick helper to scroll smoothly back to the top of the page
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const footerLinks = [
+    {
+      title: "SHOP",
+      links: [
+        { name: "All Products", path: "/products" },
+        { name: "New Arrivals", path: "/products/new" },
+        { name: "Best Sellers", path: "/products/best-sellers" },
+        { name: "Sale", path: "/sale" },
+      ],
+    },
+
+    {
+      title: "CUSTOMER SERVICE",
+      links: [
+        { name: "Contact Us", path: "/contact" },
+        { name: "Shipping", path: "/shipping" },
+        { name: "Returns", path: "/returns" },
+        { name: "FAQs", path: "/faq" },
+      ],
+    },
+
+    {
+      title: "ABOUT",
+      links: [
+        { name: "About Us", path: "/about" },
+        { name: "Our Story", path: "/our-story" },
+        { name: "Blog", path: "/blog" },
+        { name: "Reviews", path: "/reviews" },
+      ],
+    },
+
+    {
+      title: "ACCOUNT",
+      links: [
+        { name: "My Account", path: "/account" },
+        { name: "My Orders", path: "/orders" },
+        { name: "Wishlist", path: "/wishlist" },
+        { name: "Cart", path: "/cart" },
+      ],
+    },
+  ];
 
   return (
-    <footer className="bg-slate-900 text-slate-300 border-t border-slate-800">
-      {/* 1. Main Content Grid */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16">
-        {/* Responsive Grid Structure: 1 column on mobile, 2 on tablet, 4 on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          
-          {/* Column 1: Brand & About */}
-          <div className="flex flex-col gap-4">
-            <div className="text-xl font-black tracking-tighter text-white flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center font-bold text-sm bg-white text-black">
-                A
-              </div>
-              <span>AURA</span>
-            </div>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Crafting premium and modern digital experiences. Minimalist designs tailored for functionality and style.
+    <footer className="bg-black text-slate-300">
+
+      {/* MAIN FOOTER */}
+      <div className="max-w-7xl mx-auto px-6 py-12">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+          {/* LEFT SIDE */}
+          <div className="md:col-span-1">
+
+            {/* LOGO */}
+            <h2 className="text-2xl font-bold text-white">
+              UrbanCart
+            </h2>
+
+            {/* DESCRIPTION */}
+            <p className="mt-4 text-sm leading-6 max-w-sm">
+              Discover quality products, unbeatable prices,
+              and a shopping experience designed for you.
             </p>
-            {/* Social Icons */}
-            <div className="flex items-center gap-4 mt-2">
-              <a href="#" className="p-2 bg-slate-800 hover:bg-black rounded-full text-slate-400 hover:text-white transition-all duration-200">
-                
+
+            {/* SOCIAL ICONS */}
+            <div className="flex gap-4 mt-6">
+
+              <a href="#" className="hover:text-white">
+                <Heart size={20} />
               </a>
-              <a href="#" className="p-2 bg-slate-800 hover:bg-black rounded-full text-slate-400 hover:text-white transition-all duration-200">
-               
+
+              <a href="#" className="hover:text-white">
+                <Heart size={20} />
               </a>
-              <a href="#" className="p-2 bg-slate-800 hover:bg-black rounded-full text-slate-400 hover:text-white transition-all duration-200">
-               
+
+              <a href="#" className="hover:text-white">
+                <Heart size={20} />
               </a>
-              <a href="#" className="p-2 bg-slate-800 hover:bg-black rounded-full text-slate-400 hover:text-white transition-all duration-200">
-                
+
+              <a href="#" className="hover:text-white">
+                <Heart size={20} />
               </a>
+
             </div>
+
+            {/* BACK TO TOP */}
+            <button
+              onClick={() =>
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                })
+              }
+              className="flex items-center gap-2 mt-8 border border-slate-600 px-4 py-2 text-sm hover:bg-white hover:text-black transition"
+            >
+              <Heart size={16} />
+              Back to Top
+            </button>
+
           </div>
 
-          {/* Column 2: Shop / Navigation */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">Shop</h3>
-            <ul className="flex flex-col gap-3 text-sm">
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">All Products</a></li>
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">New Arrivals</a></li>
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">Best Sellers</a></li>
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">Discounts</a></li>
-            </ul>
-          </div>
 
-          {/* Column 3: Support */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">Support</h3>
-            <ul className="flex flex-col gap-3 text-sm">
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">Contact Us</a></li>
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">FAQs</a></li>
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">Shipping & Returns</a></li>
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">Order Tracking</a></li>
-            </ul>
-          </div>
+          {/* RIGHT SIDE - YOUR EXISTING LINKS */}
+          <div className="md:col-span-2 grid grid-cols-2 lg:grid-cols-4 gap-8">
 
-          {/* Column 4: Legal / Privacy */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">Company</h3>
-            <ul className="flex flex-col gap-3 text-sm">
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white hover:underline underline-offset-4 transition-colors">Terms of Service</a></li>
-            </ul>
+            {footerLinks.map((section) => (
+
+              <div key={section.title}>
+
+                <h3 className="text-white font-semibold mb-4">
+                  {section.title}
+                </h3>
+
+                <div className="flex flex-col gap-3">
+
+                  {section.links.map((link) => (
+
+                    <Link
+                      key={link.name}
+                      to={link.path}
+                      className="text-sm hover:text-white transition"
+                    >
+                      {link.name}
+                    </Link>
+
+                  ))}
+
+                </div>
+
+              </div>
+
+            ))}
+
           </div>
 
         </div>
+
       </div>
 
-      {/* 2. Bottom Copyright Bar */}
-      <div className="border-t border-slate-800 bg-slate-950 px-4 md:px-8 py-6">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <div>
-            &copy; {new Date().getFullYear()} AURA Inc. All rights reserved.
-          </div>
-          
-          {/* Scroll back to top button */}
-          <button 
-            onClick={scrollToTop}
-            className="flex items-center gap-2 px-3 py-1.5 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 rounded-md transition-all duration-200 group"
-          >
-            Back to top
-            <ArrowUp size={14} className="group-hover:-translate-y-0.5 transition-transform" />
-          </button>
-        </div>
+
+      {/* COPYRIGHT */}
+      <div className="border-t border-slate-800 text-center py-4 text-sm">
+        © 2026 UrbanCart. All Rights Reserved.
       </div>
+
     </footer>
   );
 }

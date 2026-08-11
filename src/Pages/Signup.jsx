@@ -1,17 +1,25 @@
 import { useContext,useState } from "react"
 import { AuthContext } from "../Context/AuthContext";
 import { Link } from "react-router";
+import { useNavigate } from "react-router-dom";
+import ModernSpinner from '../SmallComponents/Spinner';
 
 function Signup() {
        const [Email, setEmail] = useState('');
        const [Password, setPassword] = useState('');
-      const {sign_Up,} = useContext(AuthContext)
+      const {signUp,loading} = useContext(AuthContext);
+      const navigate = useNavigate();
        async function  handle_Signup(e)  {
             e.preventDefault()
             console.log("Signup clicked");
-            await sign_Up(Email,Password)
+            await signUp(Email,Password)
+             navigate("/");
+            
        }
+
        
+     if(loading) return (<ModernSpinner></ModernSpinner>)
+      
       return (
             <form action="" onSubmit={(e)=> handle_Signup(e)}>
                   <div className="flex justify-center items-center w-full h-screen bg-green-600">

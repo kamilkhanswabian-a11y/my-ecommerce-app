@@ -1,117 +1,228 @@
-import React, { useContext } from 'react';
-import { User, Mail, Shield, Calendar, LogOut, ArrowLeft } from 'lucide-react';
-import { Link, useNavigate } from 'react-router';
-import { AuthContext } from '../Context/AuthContext';
+import React, { useContext } from "react";
+import {
+  User,
+  Mail,
+  Shield,
+  Calendar,
+  LogOut,
+  ArrowLeft,
+} from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
+import ModernSpinner from '../SmallComponents/Spinner';
 
 function Profile() {
-  const { user, sign_Out } = useContext(AuthContext);
+  const { user, signOut , loading } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSignOut = async () => {
-    if (sign_Out) {
-      await sign_Out();
-      navigate('/Sign-in');
-    }
-  };
-
+  async function handleLogout() {
+    await signOut();
+    navigate("/Sign-in");
+  }
+   
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg font-medium text-gray-600">
+          Please login to view profile
+        </p>
+      </div>
+    );
+  }
+     if(loading) return (<ModernSpinner></ModernSpinner>)
+ 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 p-4 sm:p-8 flex justify-center">
-      <div className="w-full max-w-2xl space-y-6">
-        
-        {/* Navigation Header */}
-        <div className="flex items-center justify-between">
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 transition duration-200"
-          >
-            <ArrowLeft size={18} />
-            <span>Back to Home</span>
-          </Link>
-          <span className="text-xs font-mono text-slate-500 uppercase tracking-widest">
-            Account Settings
-          </span>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-indigo-100 px-4 py-10">
+
+      <div className="max-w-4xl mx-auto">
+
+        {/* Back Button */}
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-gray-600 hover:text-indigo-600 transition mb-8"
+        >
+          <ArrowLeft size={20} />
+          Back Home
+        </Link>
+
 
         {/* Profile Card */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
-          
-          {/* Avatar & Header */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pb-6 border-b border-slate-800">
-            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-slate-800 border border-slate-700 text-slate-300">
-              <User size={32} strokeWidth={1.5} />
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+
+          {/* Header */}
+          <div className="h-40 bg-gradient-to-r from-indigo-600 to-purple-600 relative">
+
+            <div className="absolute -bottom-14 left-8">
+
+              <div className="w-28 h-28 rounded-full bg-white shadow-lg flex items-center justify-center">
+
+                <User
+                  size={55}
+                  className="text-indigo-600"
+                />
+
+              </div>
+
             </div>
-            <div>
-              <h1 className="text-xl font-bold text-slate-100">
-                {user?.email ? user.email.split('@')[0] : 'User Profile'}
-              </h1>
-              <p className="text-sm text-slate-400">
-                Manage your account preferences and details
-              </p>
-            </div>
+
           </div>
 
-          {/* Account Details List */}
-          <div className="space-y-4">
-            <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-              Information
-            </h2>
 
-            {/* Email item */}
-            <div className="flex items-center justify-between p-3.5 bg-slate-950/50 border border-slate-800/80 rounded-xl">
-              <div className="flex items-center gap-3">
-                <Mail size={18} className="text-slate-500" />
+
+          {/* Content */}
+          <div className="pt-20 px-8 pb-8">
+
+
+            <h1 className="text-3xl font-bold text-gray-900">
+              {user.user_metadata?.name || "User Profile"}
+            </h1>
+
+            <p className="text-gray-500 mt-1">
+              Welcome back 👋
+            </p>
+
+
+
+            {/* Info Grid */}
+            <div className="grid md:grid-cols-2 gap-5 mt-8">
+
+
+              {/* Email */}
+              <div className="flex items-center gap-4 p-5 rounded-2xl bg-gray-50">
+
+                <div className="p-3 rounded-xl bg-indigo-100">
+                  <Mail className="text-indigo-600" />
+                </div>
+
                 <div>
-                  <p className="text-xs text-slate-500">Email Address</p>
-                  <p className="text-sm font-medium text-slate-200">
-                    {user?.email || 'Not logged in'}
+                  <p className="text-sm text-gray-500">
+                    Email
+                  </p>
+
+                  <p className="font-semibold text-gray-800 break-all">
+                    {user.email}
                   </p>
                 </div>
-              </div>
-              <span className="text-xs bg-slate-800 text-slate-400 px-2.5 py-1 rounded-md border border-slate-700/50">
-                Verified
-              </span>
-            </div>
 
-            {/* User ID / Role */}
-            <div className="flex items-center justify-between p-3.5 bg-slate-950/50 border border-slate-800/80 rounded-xl">
-              <div className="flex items-center gap-3">
-                <Shield size={18} className="text-slate-500" />
-                <div>
-                  <p className="text-xs text-slate-500">Account ID</p>
-                  <p className="text-sm font-mono text-slate-300 truncate max-w-[180px] sm:max-w-xs">
-                    {user?.id || 'N/A'}
-                  </p>
+              </div>
+
+
+
+
+              {/* Status */}
+              <div className="flex items-center gap-4 p-5 rounded-2xl bg-gray-50">
+
+                <div className="p-3 rounded-xl bg-green-100">
+                  <Shield className="text-green-600" />
                 </div>
-              </div>
-            </div>
 
-            {/* Created At */}
-            <div className="flex items-center justify-between p-3.5 bg-slate-950/50 border border-slate-800/80 rounded-xl">
-              <div className="flex items-center gap-3">
-                <Calendar size={18} className="text-slate-500" />
                 <div>
-                  <p className="text-xs text-slate-500">Member Since</p>
-                  <p className="text-sm font-medium text-slate-300">
-                    {user?.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Action Footer */}
-          <div className="pt-4 border-t border-slate-800 flex justify-end">
+                  <p className="text-sm text-gray-500">
+                    Account Status
+                  </p>
+
+                  <p className="font-semibold text-green-600">
+                    Verified
+                  </p>
+
+                </div>
+
+              </div>
+
+
+
+
+
+              {/* Created */}
+              <div className="flex items-center gap-4 p-5 rounded-2xl bg-gray-50">
+
+                <div className="p-3 rounded-xl bg-purple-100">
+                  <Calendar className="text-purple-600" />
+                </div>
+
+
+                <div>
+
+                  <p className="text-sm text-gray-500">
+                    Joined
+                  </p>
+
+                  <p className="font-semibold text-gray-800">
+                    {new Date(user.created_at).toLocaleDateString()}
+                  </p>
+
+                </div>
+
+
+              </div>
+
+
+
+
+
+              {/* User ID */}
+              <div className="flex items-center gap-4 p-5 rounded-2xl bg-gray-50">
+
+                <div className="p-3 rounded-xl bg-orange-100">
+                  <User className="text-orange-600" />
+                </div>
+
+
+                <div>
+
+                  <p className="text-sm text-gray-500">
+                    User ID
+                  </p>
+
+                  <p className="font-semibold text-gray-800 truncate">
+                    {user.id.slice(0, 12)}...
+                  </p>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
+
+            {/* Logout */}
             <button
-             
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700/80 text-slate-300 hover:text-white rounded-xl text-sm font-medium border border-slate-700/60 transition duration-200"
+              onClick={handleLogout}
+              className="
+              mt-10
+              w-full
+              flex
+              items-center
+              justify-center
+              gap-3
+              bg-red-500
+              hover:bg-red-600
+              text-white
+              py-4
+              rounded-2xl
+              font-semibold
+              transition
+              shadow-lg
+              "
             >
-              <LogOut size={16} />
-              <span  onClick={handleSignOut}>Sign Out</span>
+
+              <LogOut size={20} />
+              Logout
+
             </button>
+
+
           </div>
 
         </div>
+
       </div>
+
     </div>
   );
 }

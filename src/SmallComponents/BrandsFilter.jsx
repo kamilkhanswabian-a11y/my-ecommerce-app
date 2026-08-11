@@ -26,7 +26,7 @@ function BrandsFilter() {
                 type="checkbox"
                 checked={Brands.includes(brand)}
                 onChange={() => toggleBrands(brand)}
-                className="h-4 w-4 cursor-pointer rounded border-gray-300 text-black focus:ring-2 focus:ring-black focus:ring-offset-2"
+                className="h-4 w-4 cursor-pointer rounded border-gray-300 "
               />
             </div>
           </label>
