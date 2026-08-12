@@ -12,7 +12,7 @@ function Logo() {
 
       {/* High-End Clean Typography */}
       <span className="text-lg font-black tracking-[0.2em] text-black uppercase">
-        Aura
+        Zain
       </span>
     </div>
       </>
