@@ -1,5 +1,7 @@
 import {
-  Heart
+  AArrowUp,
+  Heart,
+  HeartIcon
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -49,107 +51,74 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-slate-300">
+                    <div className="max-w-7xl py-12 px-8">
+                                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                                         <div className="md:col-span-1">
+                                                    <h1 className="font-bold text-2xl text-white">
+                                                         Aura
+                                                    </h1>
+                                                    <p className="mt-4 text-sm leading-6 max-w-sm">
+                                                      Discover quality products, unbeatable prices, and a shopping experience designed for you.
+                                                    </p>
 
-      {/* MAIN FOOTER */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+                                                    <div className="flex gap-4 mt-6">
+                                                               <a href=""className="hover:text-white">
+                                                                  <HeartIcon size={20}/>
+                                                               </a>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                                                               <a href=""className="hover:text-white">
+                                                                  <HeartIcon size={20}/>
+                                                               </a>
 
-          {/* LEFT SIDE */}
-          <div className="md:col-span-1">
+                                                               <a href=""className="hover:text-white">
+                                                                  <HeartIcon size={20}/>
+                                                               </a>
 
-            {/* LOGO */}
-            <h2 className="text-2xl font-bold text-white">
-              UrbanCart
-            </h2>
+                                                               <a href=""className="hover:text-white">
+                                                                  <HeartIcon size={20}/>
+                                                               </a>
+                                                    </div>
 
-            {/* DESCRIPTION */}
-            <p className="mt-4 text-sm leading-6 max-w-sm">
-              Discover quality products, unbeatable prices,
-              and a shopping experience designed for you.
-            </p>
+                                                      <button
+                                                         onClick={() =>
+                                                           window.scrollTo({
+                                                                            top: 0,
+                                                                            behavior: "smooth",
+                                                                           })
+                                                                    }
+                                                       className="flex items-center gap-2 mt-8 border border-slate-600 px-4 py-2 text-sm hover:bg-white hover:text-black transition"
+                                                                              >
+                                                                                <Heart size={16} />
+                                                                                Back to Top
+                                                                              </button>
 
-            {/* SOCIAL ICONS */}
-            <div className="flex gap-4 mt-6">
+                                         </div>
 
-              <a href="#" className="hover:text-white">
-                <Heart size={20} />
-              </a>
+                                         <div className="md:col-span-2  grid lg:grid-cols-4 grid-cols-2 gap-8">
+                                                 {
+                                                   footerLinks.map((links)=> (
+                                                         <div key={links.name} className="flex flex-col gap-3">
+                                                                    <h1 className="font-semibold text-white ">
+                                                                         {links.title}
+                                                                    </h1>
 
-              <a href="#" className="hover:text-white">
-                <Heart size={20} />
-              </a>
+                                                                    <Link className="flex flex-col gap-2 text-sm">
+                                                                            {links.links.map((link)=>(
+                                                                               <h1 key={link.name}>
+                                                                                   {link.name}
+                                                                               </h1>
+                                                                            ))}
+                                                                    </Link>
+                                                         </div>
+                                                   )) 
+                                                 }       
+                                         </div>
+                                  </div>
+                    </div>
 
-              <a href="#" className="hover:text-white">
-                <Heart size={20} />
-              </a>
-
-              <a href="#" className="hover:text-white">
-                <Heart size={20} />
-              </a>
-
-            </div>
-
-            {/* BACK TO TOP */}
-            <button
-              onClick={() =>
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                })
-              }
-              className="flex items-center gap-2 mt-8 border border-slate-600 px-4 py-2 text-sm hover:bg-white hover:text-black transition"
-            >
-              <Heart size={16} />
-              Back to Top
-            </button>
-
-          </div>
-
-
-          {/* RIGHT SIDE - YOUR EXISTING LINKS */}
-          <div className="md:col-span-2 grid grid-cols-2 lg:grid-cols-4 gap-8">
-
-            {footerLinks.map((section) => (
-
-              <div key={section.title}>
-
-                <h3 className="text-white font-semibold mb-4">
-                  {section.title}
-                </h3>
-
-                <div className="flex flex-col gap-3">
-
-                  {section.links.map((link) => (
-
-                    <Link
-                      key={link.name}
-                      to={link.path}
-                      className="text-sm hover:text-white transition"
-                    >
-                      {link.name}
-                    </Link>
-
-                  ))}
-
-                </div>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      {/* COPYRIGHT */}
-      <div className="border-t border-slate-800 text-center py-4 text-sm">
-        © 2026 UrbanCart. All Rights Reserved.
-      </div>
-
+                    <div className="border-t border-slate-800 text-center py-4 text-sm">
+                            © 2026 UrbanCart. All Rights Reserved.
+                    </div>
     </footer>
   );
 }
