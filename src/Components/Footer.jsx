@@ -1,4 +1,5 @@
 import {
+  AArrowUp
   Heart,
   HeartIcon
 } from "lucide-react";
@@ -87,7 +88,7 @@ export default function Footer() {
                                                                     }
                                                        className="flex items-center gap-2 mt-8 border border-slate-600 px-4 py-2 text-sm hover:bg-white hover:text-black transition"
                                                                               >
-                                                                                <Heart size={16} />
+                                                                                <AArrowUp size={16} />
                                                                                 Back to Top
                                                                               </button>
 
