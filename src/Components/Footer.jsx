@@ -1,5 +1,4 @@
 import {
-  AArrowUp,
   Heart,
   HeartIcon
 } from "lucide-react";

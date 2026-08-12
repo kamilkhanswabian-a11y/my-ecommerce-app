@@ -1,7 +1,7 @@
 
 import { useContext, useRef } from "react";
 import { FilterContext } from "../Context/FilteterContext";
-import Card from "../components/Card";
+import Card from "../Components/Card";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
