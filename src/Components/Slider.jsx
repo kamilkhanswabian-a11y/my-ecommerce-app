@@ -12,35 +12,35 @@ const banners = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1747691875590-14db938e42d4?q=80&w=465&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "Summer Collection",
     subtitle: "Up to 50% Off",
   },
   {
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "New Fashion Arrivals",
     subtitle: "Premium Quality",
   },
   {
     id: 3,
     image:
-      "https://images.unsplash.com/photo-1523381210434-271e8be1f52?auto=format&fit=crop&w=1920&q=80",
+      "https://plus.unsplash.com/premium_photo-1779449604558-fb4ad80ce80b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "Street Style",
     subtitle: "Trending Collection",
   },
   {
     id: 4,
     image:
-      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1739132268693-8ba353f0959c?q=80&w=848&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "Luxury Essentials",
     subtitle: "Designed For You",
   },
   {
     id: 5,
     image:
-      "https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1746206434527-b02438fc36af?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "Exclusive Deals",
     subtitle: "Shop Today",
   },
@@ -48,7 +48,7 @@ const banners = [
 
 export default function Slider() {
   return (
-    <section className="w-full overflow-hidden  pt-6 h-screen">
+    <section className="w-full overflow-hidden  pt-5  h-screen">
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
         loop={true}
@@ -59,12 +59,12 @@ export default function Slider() {
         }}
         navigation
         pagination={{ clickable: true }}
-        className="h-[85vh] w-full"
+        className="h-[85vh] w-full "
       >
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             {({ isActive }) => (
-              <div className="relative h-full w-full">
+              <div className="relative h-full w-full p-5 text-white">
                 {/* Background Image */}
                 <img
                   src={banner.image}

@@ -36,7 +36,7 @@ function FeaturedProducts() {
           </h1>
 
           {/* Allbirds-style arrows */}
-          <div className="flex items-center mr-5">
+          <div className="md:flex items-center mr-5 hidden">
             <button
               ref={prevRef}
               className="

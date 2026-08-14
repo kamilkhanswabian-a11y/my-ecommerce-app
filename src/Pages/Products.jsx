@@ -5,7 +5,7 @@ import Sidebar from "../Components/Sidebar";
 import Sortbar from "../Components/Sortbar";
 import Card from "../Components/Card";
 import Spinner from "../SmallComponents/Spinner";
-
+import Footer from '../Components/Footer'
 function Products() {
   const { filterProducts, isPending } = useContext(FilterContext);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
@@ -74,6 +74,7 @@ function Products() {
           </section>
         </div>
       </main>
+      <Footer></Footer>
     </div>
   );
 }

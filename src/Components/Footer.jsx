@@ -1,6 +1,5 @@
 import {
-  AArrowUp
-  Heart,
+  AArrowUp,
   HeartIcon
 } from "lucide-react";
 
@@ -19,7 +18,7 @@ export default function Footer() {
     },
 
     {
-      title: "CUSTOMER SERVICE",
+      title: "SUPPORT",
       links: [
         { name: "Contact Us", path: "/contact" },
         { name: "Shipping", path: "/shipping" },

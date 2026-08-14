@@ -16,12 +16,12 @@ function Router() {
                 <Route path="/Sign-up" element={<Signup/>} />
                 <Route path="/Sign-in" element={<Signin/>} />
                 <Route path="/" element={<Home />} />
+                <Route path="/cart" element={<Cartpage/>} />
                 <Route path="/products" element={<Products />} />
                                           {/* {<Protected Routes */}
                 <Route path="/Profile" element={<Profile />} />
                                                   
                 <Route element={<ProtectedLayout />}>
-                <Route path="/cart" element={<Cartpage/>} />
                 <Route path="/whislist" element={<Whislistpage/>} />
                 <Route path="/Detail/:id" element={<Detail/>} />
                 </Route>

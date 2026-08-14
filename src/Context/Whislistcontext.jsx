@@ -1,9 +1,16 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const Wishlistcontext = createContext();
 
 export default function WishlistProvider({ children }) {
-  const [wishlist, setWishlist] = useState([]);
+  const [wishlist, setWishlist] = useState(()=> {
+      const saved = localStorage.getItem('Whislist');
+      return saved ? JSON.parse(saved) : [] ;
+  });
+ 
+  useEffect(()=> {
+     localStorage.setItem('Whislist',JSON.stringify(wishlist))
+  },[wishlist])
 
   const addToWishlist = (item) => {
     setWishlist((prev) => {
@@ -20,7 +27,6 @@ export default function WishlistProvider({ children }) {
  }
 
  const totalQuantity = wishlist.reduce((total)=>{
-           
            return total + 1;
  },0)
  

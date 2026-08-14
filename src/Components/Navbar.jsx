@@ -23,10 +23,10 @@ function Navbar() {
         </div>
         
         <div className="flex items-center gap-5">
-          <div className="hidden lg:flex">
-            <Search ></Search>
-          </div>
-          <Wishlist></Wishlist>
+          <Search ></Search>
+           <div className="hidden md:flex">
+                  <Wishlist/>
+           </div>
           <Cart></Cart>
           <Users/>
 
@@ -47,14 +47,14 @@ function Navbar() {
         <>
           {/* FIX: Added md:hidden right here to the main container */}
           <div className="md:hidden flex flex-col gap-4 p-3 sticky top-[60px] left-0 z-40 bg-slate-100 w-full shadow-lg border-b border-gray-200">
-            <div className="flex justify-end">
-              <Search></Search>
+            <div className="flex justify-between">
+                  <Wishlist></Wishlist>
+                  <Darkmode/>
             </div>
             <Links></Links>
             <div className="flex justify-between items-center">
               <Signupbutton></Signupbutton>
               <Users/>
-              <Darkmode/>
             </div>
           </div>
         </>

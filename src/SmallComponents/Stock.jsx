@@ -5,7 +5,7 @@ function Stock() {
   const { inStock, toggleInStock } = useContext(FilterContext);
 
   return (
-    <div className="mt-5 max-w-sm px-4">
+    <div className="mt-5 max-w-sm px-4 py-8">
       <label 
         onClick={toggleInStock}
         className={`
@@ -30,7 +30,7 @@ function Stock() {
           </span>
         </div>
 
-        <div className="relative flex items-center">
+        <div className="relative flex items-center ">
           <input
             type="checkbox"
             checked={inStock}
