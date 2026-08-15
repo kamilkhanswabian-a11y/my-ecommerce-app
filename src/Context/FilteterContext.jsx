@@ -8,7 +8,12 @@ export const FilterContext = createContext(null);
 export default function FilterProvider({ children }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Initialize state from URL parameters
+  
+  const [Sortby, setSortby] = useState(() => {
+    return searchParams.get("sort") || "New";
+  });
+
+
   const [Category, setCategory] = useState(() => {
     return searchParams.get('category')?.split(',') || [];
   });
@@ -67,9 +72,13 @@ export default function FilterProvider({ children }) {
     if (priceRange.max < 1000) {
       params.set('maxPrice', priceRange.max.toString());
     }
+
+    if (Sortby !== "New") {
+      params.set("sort", Sortby);
+    }
     
     setSearchParams(params);
-  }, [Category, Brands, Color, Rating, inStock, priceRange, setSearchParams]);
+  }, [Category, Brands, Color, Rating, inStock, priceRange,Sortby, setSearchParams]);
 
   const { data, isPending, error } = useQuery({
     queryKey: ["Products"],
@@ -129,9 +138,35 @@ export default function FilterProvider({ children }) {
       matchrate && priceMatch && stockMatch;
   });
 
+ const sortedProducts = [...(filterProducts || [])].sort(
+    (a, b) => {
+      if (Sortby === "low to high") {
+        return Number(a.price) - Number(b.price);
+      }
+
+      if (Sortby === "High to Low") {
+        return Number(b.price) - Number(a.price);
+      }
+
+      if (Sortby === "Top Rated") {
+        return Number(b.rating) - Number(a.rating);
+      }
+
+      if (Sortby === "Popular") {
+        return Number(b.rating) - Number(a.rating);
+      }
+
+      // Newest / default
+      return 0;
+    }
+  );
+
+
+
+
   return (
     <FilterContext.Provider value={{
-      filterProducts,
+      filterProducts: sortedProducts,
       data,
       isPending,
       error,
@@ -148,6 +183,8 @@ export default function FilterProvider({ children }) {
       inStock,
       setinStock,
       toggleInStock,
+      Sortby,
+      setSortby,
     }}>
       {children}
     </FilterContext.Provider>
