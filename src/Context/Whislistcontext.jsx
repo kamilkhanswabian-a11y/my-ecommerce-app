@@ -26,12 +26,14 @@ export default function WishlistProvider({ children }) {
        return wishlist.some((item)=> item.id === id)
  }
 
- const totalQuantity = wishlist.reduce((total)=>{
+
+ const totalItem = wishlist.reduce((total)=>{
            return total + 1;
  },0)
- 
+
+   
   return (
-    <Wishlistcontext.Provider value={{ wishlist, addToWishlist,isInWishlist,totalQuantity }}>
+    <Wishlistcontext.Provider value={{ wishlist, addToWishlist,isInWishlist,totalItem }}>
       {children}
     </Wishlistcontext.Provider>
   );

@@ -9,13 +9,28 @@ export function Authprovider({ children }) {
   const [error, setError] = useState(null);
 
   // Sign Up
-  async function signUp(email, password) {
+  async function signUp(form) {
     setLoading(true);
     setError(null);
     const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
+     email: form.email,
+    password: form.password,
     });
+    
+     if (!data.user) {
+    setLoading(false);
+    setError('Please check your email to confirm your account before signing in.');
+    return data;
+  }
+
+    const {profileError} = await supabase
+    .from('profiles')
+    .insert({
+        id:data.user.id,
+        firstname:form.firstname, 
+        lastname:form.lastname, 
+    })
+
     if (error) {
       setError(error.message);
       throw error;
