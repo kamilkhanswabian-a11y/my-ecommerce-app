@@ -28,10 +28,10 @@ function Router() {
                          
                           {/* {<Protected Routes */}
 
-                <Route element={<ProtectedLayout />}>                            
                 <Route path="/whislist" element={<Whislistpage/>} />
                 <Route path="/Detail/:id" element={<Detail/>} />
 
+                <Route element={<ProtectedLayout />}>                            
                                  {/* Profile */}
                 <Route path="/profile" element={<Profile />}>
                   <Route index element={<Overview />} />

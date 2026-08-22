@@ -46,8 +46,8 @@ import { AuthContext } from '../../Context/AuthContext';
 ];
 
 function Sidebar() {
-  const {signOut} =useContext(AuthContext)
- async function handle_Submit(p) {
+  const {signOut,profile,user} =useContext(AuthContext)
+ async function handle_Submit() {
           await signOut()
  }
   return (
@@ -57,8 +57,11 @@ function Sidebar() {
                         Avatar
                   </div>
                   <div className='mt-2 items-center'>
-                        <h1>User name</h1>
-                        <p>Uer gmail</p>        
+                         <div className='flex gap-1'>
+                              <h1>{profile?.firstname || 'User'}</h1>
+                              <h1>{profile?.lastname || ''}</h1>
+                         </div>
+                        <p>{user?.email}</p>        
                   </div>
             </div>
             <div className='mt-8'>
@@ -82,14 +85,14 @@ function Sidebar() {
             </NavLink>
                     )
                 })}
-                 <div className='flex items-center mt-8 px-4'>
-                 <div className='flex gap-2'>
-                        <button>
-                            <LogOut/>
-                        </button>
+                 <div className='flex items-center justify-center rounded-md bg-black text-white  py-3 mt-8 mx-5'>
+                 <div >
+                        <button className='flex items-center gap-2'>
+                            <LogOut size={20}/>
                         <div onClick={handle_Submit}>
                               Log Out    
                         </div>
+                        </button>
                  </div>
             </div>
             </div>

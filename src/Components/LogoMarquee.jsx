@@ -1,41 +1,43 @@
 import Marquee from "react-fast-marquee";
 
 const logos = [
-  "https://cdn.simpleicons.org/nike",
-  "https://cdn.simpleicons.org/adidas",
-  "https://cdn.simpleicons.org/apple",
-  "https://cdn.simpleicons.org/puma",
-  "https://cdn.simpleicons.org/zara",
-  "https://cdn.simpleicons.org/hm",
+  { name: "Nike", src: "https://cdn.simpleicons.org/nike" },
+  { name: "Adidas", src: "https://cdn.simpleicons.org/adidas" },
+  { name: "Apple", src: "https://cdn.simpleicons.org/apple" },
+  { name: "Puma", src: "https://cdn.simpleicons.org/puma" },
+  { name: "Zara", src: "https://cdn.simpleicons.org/zara" },
+  { name: "H&M", src: "https://cdn.simpleicons.org/hm" },
 ];
 
 export default function LogoMarquee() {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto mb-10 text-center">
-        <h2 className="text-3xl font-bold">
-          Trusted by the world's leading brands
+    <section className="bg-[#FAF9F5] py-24">
+      <div className=" mb-14 max-w-7xl  text-center">
+        <h2
+          className="text-3xl font-medium tracking-tight text-[#141414] md:text-4xl"
+          style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+        >
+          Trusted by the world&apos;s leading brands
         </h2>
       </div>
 
-      <Marquee
-        speed={50}
-        gradient={false}
-        pauseOnHover
-      >
-        {logos.map((logo, index) => (
-          <div
-            key={index}
-            className="mx-14 flex items-center justify-center"
-          >
-            <img
-              src={logo}
-              alt="Brand Logo"
-              className="h-12 grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
-            />
-          </div>
-        ))}
-      </Marquee>
+      {/* Framing hairlines + edge fade */}
+      <div className="">
+        <Marquee speed={40} gradient={false} pauseOnHover>
+          {logos.map((logo, index) => (
+            <div key={index} className="flex items-center">
+              <div className="group flex items-center justify-center ">
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="h-7  opacity-35 grayscale transition-all duration-500 ease-out group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
+                />
+              </div>
+              <span className="h-6  bg-[#141414]/10" />
+            </div>
+          ))}
+        </Marquee>
+      </div>
     </section>
   );
 }

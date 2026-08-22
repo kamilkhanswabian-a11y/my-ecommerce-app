@@ -1,22 +1,29 @@
 import   { useContext } from 'react'
 import Reviews from './Reviews'
 import { FilterContext } from '../Context/FilteterContext'
-
+const data = [
+    {
+        name: 'Wear All Day Comfort',
+        title : 'Lightweight, bouncy, and wildly comfortable, Allbirds shoes make any outing feel effortless. Slip in, lace up, or slide them on and enjoy the comfy support.'
+    },
+    {
+        name: 'DESIGNED FOR EVERYDAY WEAR',
+        title : 'Easy-to-wear styles made for daily routines, weekend plans, travel, and everything in between.'
+    },
+    {
+        name: 'Materials From The Earth',
+        title : 'We replace petroleum-based synthetics with natural alternatives wherever we can. Like using wool, tree fiber, and sugarcane. They’re soft, breathable, and better for the planet—win, win, win.'
+    },
+]
 function Review() {
-    const { data } = useContext(FilterContext)
-    console.log(data);
-    // if(data.length == 0)  (<h1>No Produst Found</h1>)
+   
     return (
         <div className=''>
-            <h1 className='text-center font-serif text-4xl mt-3'>
-                Customers Reviews
-            </h1>
-            <Reviews className='grid lg:grid-cols-3 my-20 md:grid-cols-2 rounded-lg '>
-                {data && data.length > 0 && data[0]?.reviews?.map((review, index) => (
-                    <div key={index} className='border rounded-md mx-4 mt-4 px-3 py-4 space-y-3 border-black'>
-                        <h3 className='font-medium'>{review.reviewer}</h3>
-                        <p>{review.rating} ⭐⭐⭐⭐⭐</p>
-                        <p>{review.comment}</p>
+            <Reviews className='grid lg:grid-cols-3 my-6 md:grid-cols-2 rounded-lg '>
+                {data?.map((review) => (
+                    <div key={review.name} className='bg-slate-100  flex flex-col justify-start rounded-lg mx-4 mt-4 px-3 py-4 space-y-3'>
+                        <h3 className='font-medium'>{review.name}</h3>
+                        <p>{review.title}</p>
                     </div>
                 ))}
             </Reviews>

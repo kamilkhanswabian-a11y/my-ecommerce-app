@@ -5,6 +5,7 @@ export const AuthContext = createContext(null);
 
 export function Authprovider({ children }) {
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,24 +14,28 @@ export function Authprovider({ children }) {
     setLoading(true);
     setError(null);
     const { data, error } = await supabase.auth.signUp({
-     email: form.email,
-    password: form.password,
+      email: form.email,
+      password: form.password,
     });
-    
-     if (!data.user) {
+
+    if (!data.user) {
+      setLoading(false);
+      setError('Please check your email to confirm your account before signing in.');
+      return data;
+    }
+
+    const { profileError } = await supabase
+      .from('profiles')
+      .insert({
+        id: data.user.id,
+        firstname: form.firstname,
+        lastname: form.lastname,
+      })
     setLoading(false);
-    setError('Please check your email to confirm your account before signing in.');
-    return data;
-  }
 
-    const {profileError} = await supabase
-    .from('profiles')
-    .insert({
-        id:data.user.id,
-        firstname:form.firstname, 
-        lastname:form.lastname, 
-    })
-
+    if(profileError){
+      setError(profileError.message)
+    }
     if (error) {
       setError(error.message);
       throw error;
@@ -46,6 +51,7 @@ export function Authprovider({ children }) {
       email,
       password,
     });
+    setLoading(false);
     if (error) {
       setError(error.message);
       throw error;
@@ -95,6 +101,28 @@ export function Authprovider({ children }) {
 
     return () => subscription.unsubscribe();
   }, []);
+  
+  useEffect(() => {
+  if (!user) {
+    setProfile(null);
+    return;
+  }
+
+  async function get_User() {
+    const { data: profileData, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', user.id)
+      .single();
+
+    if (error) {
+      setError(error.message);
+      return;
+    }
+    setProfile(profileData);
+  }
+  get_User();
+}, [user]);
 
   return (
     <AuthContext.Provider
@@ -106,6 +134,7 @@ export function Authprovider({ children }) {
         user,
         error,
         setError,
+        profile,
       }}
     >
       {children}

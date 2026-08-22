@@ -54,7 +54,6 @@ function Navbar() {
             <Links></Links>
             <div className="flex justify-between items-center">
               <Signupbutton></Signupbutton>
-              <Users/>
             </div>
           </div>
         </>

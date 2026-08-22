@@ -10,9 +10,9 @@ function Cart() {
       <Link to="/cart">
       <button title="Cart" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
         <div className="relative">
-        <ShoppingCart size={24} color="#333" />
-        <div className="absolute top-[-15px] right-0">
-            <span>{totalQuantity}</span>
+        <ShoppingCart size={20} color="#333" />
+        <div className="flex items-center justify-center absolute top-[-16px] left-2">
+            <span className="rounded-full px-1 py-0.5 text-xs font-medium text-white bg-black/70 ">{totalQuantity}</span>
         </div>
         </div>
       </button>

@@ -39,35 +39,46 @@ function Signup() {
                                                            {/* First Name */}
                          <div>
                           <input type="text"  className="outline-none border border-slate-300 my-2 py-1 px-1 w-full" placeholder="First Name" 
-                        {...register("firstname", { required: true })}
+                        {...register("firstname", { required: "This field is required",
+                          minLength : {value : 3, message: "Must be altleast 3 character"},
+                          pattern : {value : /^[A-Za-z\s]+$/, message : "only Letter Allowed" }
+                         })}
                         />
-                         {errors.firstname && <span className="text-red-600 text-sm m h-4">This field is required</span>}
+                         {errors.firstname && <p className="text-red-600 text-sm ">{errors.firstname?.message}</p>}
                          </div>
                                                            {/* First Name */}
                                                            
                          <div>
-                          <input type="text"  className="outline-none border border-slate-300 my-3 py-1 px-1 w-full" placeholder="Last Name" 
-                        {...register("lastname", { required: true })}
+                          <input type="text"  className="outline-none border border-slate-300 my-2 py-1 px-1 w-full" placeholder="Last Name" 
+                        {...register("lastname", { required: "This Field is required" ,minLength : {value : 3 , message : "Must be atleast 3 characters"},  
+                        pattern : { value: /^[A-Za-z\s]+$/, message : "only Letter Allowed"}
+                        })}
                         />
-                         {errors.lastname && <span className="text-red-600 text-sm m h-4">This field is required</span>}
+                         {errors.lastname && <span className="text-red-600 text-sm  h-4">{errors.lastname?.message}</span>}
                          </div>
                                                            {/* email */}
                           
                          <div>
 
-                          <input type="text"  className="outline-none border border-slate-300 my-3 py-1 px-1 w-full" placeholder="Eamil" 
-                        {...register("email", { required: true })}
+                          <input type="email"  className="outline-none border border-slate-300 my-2 py-1 px-1 w-full" placeholder="Eamil" 
+                        {...register("email", { required: "this field is required",
+                          pattern: {value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message:"enter valid email"}
+                         })}
                         />
-                         {errors.email && <span className="text-red-600 text-sm m h-4">This field is required</span>}
+                         {errors.email && <span className="text-red-600 text-sm">{errors.email?.message}</span>}
                          </div>
                                                            {/* password */}
 
                     <div>
-                          <input type="password" className="outline-none border border-slate-300 my-3 py-1 px-1 w-full " placeholder="Password" 
+                          <input type="password" className="outline-none border border-slate-300 my-2 py-1 px-1 w-full " placeholder="Password" 
                          
-                          {...register("password", { required: true })}  
+                          {...register("password", { required: "This field required",
+                            minLength : {value :6 ,message:"must be min 6 character" },
+                            maxLength: {value:20 , message:"must me max 20 character" },
+                            pattern : { value: /^(?=.*[A-Za-z])(?=.*\d)/, message:"password must contain one letter and one number "}
+                           })}  
                           />
-                             {errors.password && <span className="text-red-600 text-sm m h-4">This field is required</span>}
+                             {errors.password && <span className="text-red-600 text-sm m h-4">{errors.password?.message}</span>}
                     </div>
                     </div>
                     <div className="flex justify-between gap-8">

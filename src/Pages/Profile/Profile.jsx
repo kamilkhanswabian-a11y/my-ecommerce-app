@@ -11,13 +11,7 @@ import { Outlet } from 'react-router';
 
 
 function Profile() {
-  
  
-
-
-
-
-
   return (
                <div className='px-2'>
                      <div className='flex justify-between  items-center py-3 mx-2 border-b border-slate-300'>

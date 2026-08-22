@@ -14,7 +14,11 @@ function Links() {
                          Products
                    </Link> 
                   </li>
-                  <li className="hover:underline">Contacts</li>
+                  <li className="hover:underline">
+                    <Link to='/Profile/orders'>
+                            Orders
+                    </Link>
+                  </li>
                   <li className="hover:underline">Blog</li>
           </ul>   
       </>
