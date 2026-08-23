@@ -5,7 +5,7 @@ function Sortbar() {
   const { Sortby, setSortby } = useContext(FilterContext);
 
   return (
-    <div className="flex items-center justify-end py-4 px-3">
+    <div className="flex items-center justify-end py-4 px-3 ">
       <select
         value={Sortby}
         onChange={(e) => setSortby(e.target.value)}

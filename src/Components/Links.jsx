@@ -1,6 +1,11 @@
+import { useContext } from "react"
 import { Link } from "react-router"
+import { AuthContext } from "../Context/AuthContext"
 
 function Links() {
+  const {profile} =useContext(AuthContext)
+  console.log('profile:', profile);
+  console.log('full profile object:', JSON.stringify(profile));
   return (
       <> 
           <ul className=" md:flex gap-5">
@@ -19,7 +24,13 @@ function Links() {
                             Orders
                     </Link>
                   </li>
-                  <li className="hover:underline">Blog</li>
+                  <li className="hover:underline">
+                         {profile?.role === 'admin' && (
+                           <Link>
+                                  Admin
+                           </Link>
+                         )}
+                  </li>
           </ul>   
       </>
   )

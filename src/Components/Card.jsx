@@ -14,7 +14,7 @@ function Card({ data }) {
                    <h1 className='flex justify-center items-center text-black '>No product Founds...</h1>
                )}
                
-               <Cards className="flex flex-col  gap-3 bg-gray-200 border border-gray-100 rounded-2xl relative">
+               <Cards className="flex flex-col  gap-3 bg-[#ffffff] border border-gray-100 rounded-2xl relative">
 
   {/* Wishlist */}
   <div className="absolute right-2 top-2 z-10 text-white bg-white/50 p-2 rounded-full">
@@ -41,7 +41,7 @@ function Card({ data }) {
 
       {/* Product name */}
       <div className="px-2 min-h-[48px]">
-        <p className="font-serif text-black line-clamp-2">
+        <p className="font-sans text-black line-clamp-2">
           {data.name}
         </p>
       </div>
@@ -49,11 +49,11 @@ function Card({ data }) {
       {/* Brand + Category */}
       <div className="flex justify-between items-center px-2">
 
-        <p className="font-serif text-black text-sm p-1">
+        <p className="font-sans text-black text-sm p-1">
           {data.brand}
         </p>
 
-        <p className="font-serif text-black bg-white/50 text-sm p-1 rounded-full">
+        <p className="font-sans text-black bg-white/50 text-sm p-1 rounded-full">
           {data.category}
         </p>
 
@@ -66,7 +66,7 @@ function Card({ data }) {
           $ {data.price}
         </p>
 
-        <p className="font-serif text-yellow-100 bg-orange-300 text-sm rounded-full px-1">
+        <p className="font-sans text-black/100 py-2.0 bg-[#f7dfa3] text-sm rounded-full px-1">
           {Number(data.rating)}
         </p>
 
@@ -83,7 +83,7 @@ function Card({ data }) {
 
   {/* Button */}
   <Button
-    className="bg-black/50 text-white p-2 rounded-xl my-3 mx-5 mt-auto"
+    className="bg-[#ece9e2] text-black p-2 font-sans rounded-xl my-3 mx-5 mt-auto"
     onClick={() => addToCart(data)}
   >
     Add To Cart

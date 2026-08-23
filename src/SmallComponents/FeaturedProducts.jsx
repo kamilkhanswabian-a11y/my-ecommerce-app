@@ -30,7 +30,7 @@ function FeaturedProducts() {
   const featured = (data || []).filter((item) => item.featured);
 
   return (
-    <section className="bg-[#FAF9F5] py-20">
+    <section className="bg-[#ece9e2] py-20">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mb-10 flex items-end justify-between">

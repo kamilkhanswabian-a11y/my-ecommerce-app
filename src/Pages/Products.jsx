@@ -17,7 +17,7 @@ function Products() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50/50">
+    <div className="min-h-screen bg-[#ece9e2]">
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -27,14 +27,14 @@ function Products() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
           
           {/* Desktop Sidebar (Hidden on Mobile) */}
-          <aside className="hidden lg:block lg:col-span-1">
+          <aside className="hidden lg:block lg:col-span-1 ">
             <Sidebar />
           </aside>
 
           {/* Product Feed Area */}
           <section className="col-span-1 lg:col-span-3 space-y-6">
                    
-          <div className="flex justify-between items-center ">
+          <div className="flex justify-between items-center bg-[#ece9e2] ">
                 <div className="flex lg:hidden" onClick={()=> setIsMobileFilterOpen(!isMobileFilterOpen)}>
                      <Filter_Bar />  
                 </div>

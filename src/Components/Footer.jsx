@@ -49,11 +49,11 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-slate-300">
+    <footer className="bg-black text-[#ffffff]">
                     <div className="max-w-7xl py-12 px-8">
                                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                                          <div className="md:col-span-1">
-                                                    <h1 className="font-bold text-2xl text-white">
+                                                    <h1 className="font-bold text-2xl text-[#ffffff]">
                                                          Aura
                                                     </h1>
                                                     <p className="mt-4 text-sm leading-6 max-w-sm">
@@ -97,7 +97,7 @@ export default function Footer() {
                                                  {
                                                    footerLinks.map((links)=> (
                                                          <div key={links.name} className="flex flex-col gap-3">
-                                                                    <h1 className="font-semibold text-white ">
+                                                                    <h1 className="font-semibold text-[#ffffff] ">
                                                                          {links.title}
                                                                     </h1>
 

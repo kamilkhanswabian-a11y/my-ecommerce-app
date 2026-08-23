@@ -21,6 +21,7 @@ function RatingFilter() {
       <div className="space-y-2">
         {ratings.map((r) => {
           const isChecked = Rating === r.value;
+          console.log(isChecked);
           
           return (
             <label

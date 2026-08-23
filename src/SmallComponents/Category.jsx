@@ -26,7 +26,7 @@ function Category() {
   );
 
   return (
-    <div className="mt-3 px-2">
+    <div className="mt-3 px-2 ">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-700">
           Category

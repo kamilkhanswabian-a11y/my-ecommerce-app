@@ -7,7 +7,7 @@ import Stock from "../SmallComponents/Stock";
 
 function Sidebar() {
   return (
-    <aside className="h-screen sticky top-0 overflow-y-auto  border-r border-gray-100 bg-white
+    <aside className="rounded-md py-5  h-screen sticky top-0 overflow-y-auto  border-r border-gray-100 bg-white
       /* Custom Scrollbar Styling for Webkit Browsers (Chrome, Safari, Edge) */
       [&::-webkit-scrollbar]:w-1.5
       [&::-webkit-scrollbar-track]:bg-transparent

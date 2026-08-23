@@ -14,7 +14,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 flex justify-between h-[60px] w-full bg-slate-50 px-4 shadow-md">
+      <nav className="sticky top-0 z-50 flex justify-between h-[60px] w-full bg-[#ffffff] px-4 shadow-md">
         <div className="flex items-center">
           <Logo></Logo>
           <div className="hidden md:flex ml-5">

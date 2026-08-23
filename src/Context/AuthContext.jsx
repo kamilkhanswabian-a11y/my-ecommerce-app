@@ -30,6 +30,7 @@ export function Authprovider({ children }) {
         id: data.user.id,
         firstname: form.firstname,
         lastname: form.lastname,
+        role : 'user',
       })
     setLoading(false);
 
