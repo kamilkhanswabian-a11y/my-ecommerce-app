@@ -82,7 +82,7 @@ export default function Slider() {
                 </div>
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10 md:bg-gradient-to-r md:from-black/85 md:via-black/45 md:to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#212121] via-[#212121] to-[#212121] md:bg-gradient-to-r md:from-[#212121] md:via-[#212121] md:to-transparent" />
 
                 {/* Content */}
                 <div className="relative z-10 flex h-full items-end md:items-center">
@@ -149,11 +149,11 @@ export default function Slider() {
       </div>
 
       {/* Custom arrows — hidden on mobile */}
-      <div className="absolute bottom-8 right-6 z-20 hidden gap-3 md:right-12 md:flex">
+      <div className="absolute bottom-20  right-6 z-20 hidden gap-3 md:right-12 md:flex">
         <button
           aria-label="Previous slide"
           onClick={() => swiperRef?.slidePrev()}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white/80 transition-all duration-300 hover:border-[#C9A24B] hover:text-[#C9A24B]"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-300 hover:border-[#C9A24B] hover:text-[#C9A24B]"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M10 2L4 8L10 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -162,7 +162,7 @@ export default function Slider() {
         <button
           aria-label="Next slide"
           onClick={() => swiperRef?.slideNext()}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white/80 transition-all duration-300 hover:border-[#C9A24B] hover:text-[#C9A24B]"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-300 hover:border-[#C9A24B] hover:text-[#C9A24B]"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M6 2L12 8L6 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
