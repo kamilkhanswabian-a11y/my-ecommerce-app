@@ -1,8 +1,7 @@
 import {User, Mail,ShieldCheck,Calendar,LogOut,ShoppingBag,Heart,
         ShoppingCart, MapPin,Settings, Lock, ChevronRight, Package,
         CreditCard,Edit3, Menu, X,Icon, } from 'lucide-react'
-import React, { useState } from 'react'
-import Overview from './Overview';
+import  { useState } from 'react'
 
 function MobileMenu() {
       const menuItems = [
@@ -82,8 +81,8 @@ function MobileMenu() {
                         })}
                     </div>
                 )}
-                <Overview />
             </div>
+                
         </div>
     )
 }

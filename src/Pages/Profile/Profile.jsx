@@ -30,7 +30,7 @@ function Profile() {
                                   </div>
                            </div>
                      </div>
-                                                  {/* Sidebar and Man MENU */}
+                                                  {/* Sidebar and Main MENU */}
                      <div className='grid grid-cols-1 lg:grid-cols-4 mt-5'>
                            <div className='lg:hidden block'>
                                   <MobileMenu/>

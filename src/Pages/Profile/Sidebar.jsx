@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react'
 import {User, Mail,ShieldCheck,Calendar,LogOut,ShoppingBag,Heart,
         ShoppingCart, MapPin,Settings, Lock, ChevronRight, Package,
          CreditCard,Edit3, Menu, X,
-         Icon, } from 'lucide-react'
+         Icon,
+         ImageUp, } from 'lucide-react'
 import { NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
  
@@ -46,22 +47,35 @@ import { AuthContext } from '../../Context/AuthContext';
 ];
 
 function Sidebar() {
-  const {signOut,profile,user} =useContext(AuthContext)
+  const {signOut,profile,uploadAvatar} =useContext(AuthContext)
+  console.log(profile);
+  
+async  function handleAvatarChange(e) {
+     let file  = e.target.files[0];
+     if(!file)  return;
+     
+     try {
+       await uploadAvatar(file)
+     } catch (error) {
+      console.log(error);
+     } 
+  }
  async function handle_Submit() {
           await signOut()
  }
   return (
     <div className='border border-black/20 rounded-xl py-8 mx-1 overflow-y-auto '>
             <div className='flex  gap-3 px-3 mt-5'>
-                  <div className='bg-black text-white rounded-full flex items-center justify-center px-1 py-2'>
-                        Avatar
-                  </div>
+                  <img  alt="" src={profile?.avatar_url || "no url"} className= 'w-12 rounded-full flex items-center justify-center px-1 py-2'/>
                   <div className='mt-2 items-center'>
                          <div className='flex gap-1'>
-                              <h1>{profile?.firstname || 'User'}</h1>
+                              <h1>{profile?.firstname || 'Uploade Photo'}</h1>
                               <h1>{profile?.lastname || ''}</h1>
                          </div>
-                        <p>{user?.email}</p>        
+                         <input type="file"
+                          accept="image/*"
+                         onChange={handleAvatarChange}
+                         /> 
                   </div>
             </div>
             <div className='mt-8'>

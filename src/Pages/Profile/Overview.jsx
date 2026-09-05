@@ -1,12 +1,14 @@
-import { User,ShoppingBag, MapPin,ShoppingCart,Heart,Edit3,Mail, Calendar, BadgeCheck, ChevronRight} from 'lucide-react'
+import { User,ShoppingBag, MapPin,ShoppingCart,Heart,Edit3,Mail, Calendar, BadgeCheck, ChevronRight, } from 'lucide-react'
 import { useContext } from 'react';
 import { CartContext } from '../../Context/Cartcontext';
 import { Wishlistcontext } from '../../Context/Whislistcontext'
 import { Link } from 'react-router';
-
+import {AuthContext} from '../../Context/AuthContext'
 function Overview() {
   const {totalQuantity} = useContext(CartContext);
   const {totalItem}= useContext(Wishlistcontext)
+  const {profile} =useContext(AuthContext)
+  
   const Cart = [
     {
        icon : ShoppingBag,
@@ -38,7 +40,10 @@ function Overview() {
               <div className='flex items-center px-5 mx-3 my-8 py-4 rounded-2xl justify-between bg-black text-white'>
                      <div>
                             <p>Welcome Back</p>
-                            <h1>User</h1>
+                                    <div className='flex gap-1'>
+                                       <h1>{profile?.firstname || 'User'}</h1>
+                                       <h1>{profile?.lastname || ''}</h1>
+                                    </div>
                             <p>Manage your Account and Order</p>
                      </div>
                      <div>
@@ -77,7 +82,7 @@ function Overview() {
                       </div>
                      </div>
                                                   {/*Info Cards*/}
-                    <div className='my-6 grid grid-cols-1 lg:grid-cols-2'>
+                    <div className='my-6 grid grid-cols-1 lg:grid-cols-3'>
                             <div className='flex items-center gap-2 mt-8'> 
                                   <div className='bg-slate-200 px-3 py-3 rounded-full'>
                                       <User/>

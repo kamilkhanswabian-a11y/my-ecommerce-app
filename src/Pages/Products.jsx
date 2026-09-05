@@ -8,6 +8,7 @@ import Spinner from "../SmallComponents/Spinner";
 import Footer from '../Components/Footer'
 import Filter_Bar from '../Components/Filter_Bar'
 import { X } from "lucide-react";
+import Pagination from "../Components/Pagination";
 function Products() {
   const { filterProducts, isPending } = useContext(FilterContext);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
@@ -72,6 +73,8 @@ function Products() {
                 ))}
               </ul>
             )}
+                                              {/* Pagination */}
+                                                <Pagination/>
           </section>
         </div>
       </main>
