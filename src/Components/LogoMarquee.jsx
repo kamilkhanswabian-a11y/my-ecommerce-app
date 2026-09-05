@@ -12,15 +12,6 @@ const logos = [
 export default function LogoMarquee() {
   return (
     <section className="">
-      <div className="mb-14 max-w-7xl  text-center">
-        <h2
-          className="text-3xl font-medium tracking-tight text-[#141414] md:text-4xl"
-          style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-        >
-          Trusted by the world&apos;s leading brands
-        </h2>
-      </div>
-
       {/* Framing hairlines + edge fade */}
       <div className="bg-[#ece9e2]">
         <Marquee speed={40} gradient={false} pauseOnHover>
