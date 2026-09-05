@@ -93,7 +93,7 @@ export default function Footer() {
 
                                          </div>
 
-                                         <div className="md:col-span-2  grid lg:grid-cols-4 grid-cols-2 gap-8">
+                                         <div className="md:col-span-2  grid lg:grid-cols-4 grid-cols-1 gap-8">
                                                  {
                                                    footerLinks.map((links)=> (
                                                          <div key={links.title} className="flex flex-col gap-3">
