@@ -2,17 +2,29 @@ import { useQuery } from "@tanstack/react-query";
 import { createContext, useState, useEffect } from "react";
 import { getProducts } from "../apii/Api";
 import { useSearchParams } from 'react-router-dom';
+import PriceFilter from "../SmallComponents/PriceFilter";
 
 export const FilterContext = createContext(null);
 
 export default function FilterProvider({ children }) {
-  const [searchParams, setSearchParams] = useSearchParams();
-
   
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [page, setPage] = useState(1)
+   //                                  get data from api
+   const limit = 9;
+
+  const { data, isPending, error } = useQuery({
+    queryKey: ["Products",page],
+    queryFn:()=>  getProducts(page,limit),
+    keepPreviousDara:true
+  });
+
+
+
+  //                 Store Filters  in Url that can persist after refresh
   const [Sortby, setSortby] = useState(() => {
     return searchParams.get("sort") || "New";
   });
-
 
   const [Category, setCategory] = useState(() => {
     return searchParams.get('category')?.split(',') || [];
@@ -40,6 +52,7 @@ export default function FilterProvider({ children }) {
       max: Number(searchParams.get('maxPrice')) || 1000,
     };
   });
+
 
   // Update URL when filters change
   useEffect(() => {
@@ -80,10 +93,8 @@ export default function FilterProvider({ children }) {
     setSearchParams(params);
   }, [Category, Brands, Color, Rating, inStock, priceRange,Sortby, setSearchParams]);
 
-  const { data, isPending, error } = useQuery({
-    queryKey: ["Products"],
-    queryFn: getProducts
-  });
+
+
 
   // Category Filter 
   const toggleCategory = (cat) => {
@@ -117,6 +128,8 @@ export default function FilterProvider({ children }) {
     setinStock((prev) => !prev);
   }
 
+
+  //                                             Filter products from Api 
   const filterProducts = data?.filter((item) => {
     const matchCategory = Category.length === 0 ||
       Category.includes(item.category);
@@ -138,7 +151,11 @@ export default function FilterProvider({ children }) {
       matchrate && priceMatch && stockMatch;
   });
 
- const sortedProducts = [...(filterProducts || [])].sort(
+
+  //                                     Sort products from Api but use spread operater 
+  //                                      that make sure it won't change orignal array 
+ 
+  const sortedProducts = [...(filterProducts || [])].sort(
     (a, b) => {
       if (Sortby === "low to high") {
         return Number(a.price) - Number(b.price);
@@ -183,8 +200,13 @@ export default function FilterProvider({ children }) {
       inStock,
       setinStock,
       toggleInStock,
+      // Sort products
       Sortby,
       setSortby,
+      //
+      page, 
+      setPage
+
     }}>
       {children}
     </FilterContext.Provider>
