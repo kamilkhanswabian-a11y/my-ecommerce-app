@@ -15,11 +15,12 @@ import Wishlist from "../Pages/Profile/Wishlist";
 import Addresses from "../Pages/Profile/Addresses";
 import Settings from "../Pages/Profile/Settings";
 import Security from "../Pages/Profile/Security";
+import Page404 from  "../Pages/Page404"
 function Router() {
     return (
         <>
             <Routes>
-
+                <Route path="*" element={<Page404/>} />
                 <Route path="/Sign-up" element={<Signup/>} />
                 <Route path="/Sign-in" element={<Signin/>} />
                 <Route path="/" element={<Home />} />
