@@ -1,6 +1,6 @@
 import {
-  AArrowUp,
-  HeartIcon
+  HeartIcon,
+  MoveUp
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -49,7 +49,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-[#ffffff]">
+    <footer className="bg-[#212121] text-[#ffffff]">
                     <div className="max-w-7xl py-12 px-8">
                                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                                          <div className="md:col-span-1">
@@ -87,7 +87,7 @@ export default function Footer() {
                                                                     }
                                                        className="flex items-center gap-2 mt-8 border border-slate-600 px-4 py-2 text-sm hover:bg-white hover:text-black transition"
                                                                               >
-                                                                                <AArrowUp size={16} />
+                                                                                <MoveUp  size={18} />
                                                                                 Back to Top
                                                                               </button>
 
@@ -96,7 +96,7 @@ export default function Footer() {
                                          <div className="md:col-span-2  grid lg:grid-cols-4 grid-cols-2 gap-8">
                                                  {
                                                    footerLinks.map((links)=> (
-                                                         <div key={links.name} className="flex flex-col gap-3">
+                                                         <div key={links.title} className="flex flex-col gap-3">
                                                                     <h1 className="font-semibold text-[#ffffff] ">
                                                                          {links.title}
                                                                     </h1>
