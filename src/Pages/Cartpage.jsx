@@ -12,6 +12,7 @@ function Cartpage() {
     totalprice,
   } = useContext(CartContext);
 
+console.log(cartitem);
 
 
   return (
@@ -28,21 +29,21 @@ function Cartpage() {
               <div className='col-span-2'>
                 <div>
                   {cartitem.map((item) => (
-                    <div key={item.id} className='flex flex-col justify-between gap-3 p-1 sm:flex-row border-b-2 mb-2'>
+                    <div key={item.product?.id} className='flex flex-col justify-between gap-3 p-1 sm:flex-row border-b-2 mb-2'>
                       <div className='flex items-center gap-5'>
                         <div>
-                          <img src={item.images[0]} alt="" className='w-24 h-24' />
+                          <img src={item.product?.images[0]} alt="" className='w-24 h-24' />
                         </div>
                         <div className='flex-1 flex-col'>
-                          <h1>{item.category}</h1>
-                          <h1>{item.name}</h1>
-                          <h1>$ {item.price}</h1>
+                          <h1>{item.product?.category}</h1>
+                          <h1>{item.product?.name}</h1>
+                          <h1>$ {item.product?.price}</h1>
                         </div>
                       </div>
                       <div className='flex items-center justify-between gap-10 py-3 p-3'>
                         <div className='flex items-center gap-3 border border-gray-600 py-1 px-2'>
                           <button onClick={() => decQty(item.id)}><Minus size={15} /></button>
-                          <p>{item.Quantity}</p>
+                          <p>{item.product?.Quantity}</p>
                           <button onClick={() => incQty(item.id)}><Plus size={15} /></button>
                         </div>
                         <div>
