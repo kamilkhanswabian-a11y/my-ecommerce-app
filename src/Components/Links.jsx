@@ -4,8 +4,7 @@ import { AuthContext } from "../Context/AuthContext"
 
 function Links() {
   const {profile} =useContext(AuthContext)
-  console.log('profile:', profile);
-  console.log('full profile object:', JSON.stringify(profile));
+
   return (
       <> 
           <ul className=" md:flex gap-5">
@@ -25,7 +24,7 @@ function Links() {
                     </Link>
                   </li>
                   <li className="hover:underline">
-                         {profile?.role === 'admin' && (
+                         {profile?.role === 'user' && (
                            <Link>
                                   Admin
                            </Link>
