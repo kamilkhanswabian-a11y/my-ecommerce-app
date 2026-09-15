@@ -81,13 +81,13 @@ function Signup() {
                              {errors.password && <span className="text-red-600 text-sm m h-4">{errors.password?.message}</span>}
                     </div>
                     </div>
-                    <div className="flex justify-between gap-8">
+                    <div className="flex items-center justify-between gap-8">
                           <div className="flex gap-1">
                                <input type="checkbox" />
-                               <p className="font-serif">Remember Me</p>  
+                               <p className="font-serif text-nowrap">Remember Me</p>  
                           </div>
                           <div>
-                               <a href="" className="text-green-500 underline font-serif">Forget Password</a>
+                               <a href="" className="text-green-500 text-nowrap underline font-serif">Forget Password</a>
                           </div>
                     </div>
                     <button className="border border-black w-full mt-3 bg-black text-white font-bold font-serif py-1 rounded-sm">
@@ -95,9 +95,9 @@ function Signup() {
                     </button>
 
                     <div className="flex gap-2 justify-center mt-1">
-                          <p className="font-serif">Already have an account</p>
+                          <p className="font-serif text-nowrap">Already have an account</p>
                            <Link to='/Sign-in'>
-                                 <p className="text-green-500 font-serif underline">Sign In</p>
+                                 <p className="text-green-500 font-serif underline text-nowrap">Sign In</p>
                            </Link>
                     </div>
              </div>         
