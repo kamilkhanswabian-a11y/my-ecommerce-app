@@ -17,7 +17,7 @@ function Card({ data }) {
                <Cards className="flex flex-col  gap-3 bg-gray-200 border border-gray-100 rounded-2xl relative">
 
   {/* Wishlist */}
-  <div className="absolute right-2 top-2 z-10 text-white">
+  <div className="absolute right-2 top-2 z-10 text-white bg-white/50 p-2 rounded-full">
     <HeartIcon
       onClick={() => addToWishlist(data)}
       className={`w-6 h-6 cursor-pointer ${
