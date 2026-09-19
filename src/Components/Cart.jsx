@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { CartContext } from "../Context/Cartcontext";
 
 function Cart() {
-  const {totalQuantity} = useContext(CartContext)
+  const {cart} = useContext(CartContext);
+  console.log(cart);
+  
   return (
     <div>
       <Link to="/cart">
@@ -12,7 +14,7 @@ function Cart() {
         <div className="relative">
         <ShoppingCart size={20} color="#333" />
         <div className="flex items-center justify-center absolute top-[-16px] left-2">
-            <span className="rounded-full px-1 py-0.5 text-xs font-medium text-white bg-black/70 ">{totalQuantity}</span>
+            <span className="rounded-full px-1 py-0.5 text-xs font-medium text-white bg-black/70 ">{cart?.length}</span>
         </div>
         </div>
       </button>
