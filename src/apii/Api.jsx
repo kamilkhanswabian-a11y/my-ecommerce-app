@@ -1,17 +1,17 @@
-import axios from "axios";
+import { supabase } from "../supabaseClient";
 
-const Api = axios.create({
-  baseURL: "https://6a76d2b463e9caf860c31ffd.mockapi.io/products",
-});
+export const getProducts = async (page, limit) => {
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
 
-export const getProducts = async (page,limit) => {
-  const res = await Api.get("/",{
-      params : {
-        page,
-        limit,
-      }
-  });
-  return res.data; // ✅ return just the array/payload
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .range(from, to);
+    
+  if (error) {
+    throw error;
+  }
+
+  return data;
 };
-
-export default Api;
