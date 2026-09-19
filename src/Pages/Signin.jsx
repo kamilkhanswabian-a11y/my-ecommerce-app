@@ -36,10 +36,10 @@ function Signin() {
                                    <div className="flex justify-between gap-8">
                                          <div className="flex gap-1">
                                               <input type="checkbox" />
-                                              <p className="font-serif">Remember Me</p>  
+                                              <p className="font-serif text-nowrap">Remember Me</p>  
                                          </div>
                                          <div>
-                                              <a href="" className="text-green-500 underline font-serif">Forget Password</a>
+                                              <a href="" className="text-green-500 underline font-serif text-nowrap">Forget Password</a>
                                          </div>
                                    </div>
                                    <button className="border border-black w-full mt-3 bg-black text-white font-bold font-serif py-1 rounded-sm">
