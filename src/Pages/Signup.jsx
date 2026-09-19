@@ -30,15 +30,15 @@ function Signup() {
   if (loading) return <ModernSpinner />;
 
   return (
-  <form onSubmit={handleSubmit(handle_Signup)} className="min-h-screen bg-white flex items-center justify-center p-4 ">
-             <div className="border border-slate-300 px-10 py-7 shadow-md rounded-sm">
+  <form onSubmit={handleSubmit(handle_Signup)} className="h-screen bg-white flex items-center justify-center ">
+             <div className="border border-slate-300 px-10 py-7 shadow-md rounded-sm ">
                     <h1 className="my-5  text-center text-3xl font-serif font-bold">
                          Sign Up
                     </h1>
                     <div>
                                                            {/* First Name */}
                          <div>
-                          <input type="text"  className="outline-none border border-slate-300 my-2 py-1 px-1 w-full" placeholder="First Name" 
+                          <input type="text"  className="outline-none border border-slate-300 my-4 py-1 px-1 w-full" placeholder="First Name" 
                         {...register("firstname", { required: "This field is required",
                           minLength : {value : 3, message: "Must be altleast 3 character"},
                           pattern : {value : /^[A-Za-z\s]+$/, message : "only Letter Allowed" }
@@ -46,10 +46,10 @@ function Signup() {
                         />
                          {errors.firstname && <p className="text-red-600 text-sm ">{errors.firstname?.message}</p>}
                          </div>
-                                                           {/* First Name */}
+                                                           {/* last  Name */}
                                                            
                          <div>
-                          <input type="text"  className="outline-none border border-slate-300 my-2 py-1 px-1 w-full" placeholder="Last Name" 
+                          <input type="text"  className="outline-none border border-slate-300 my-4 py-1 px-1 w-full" placeholder="Last Name" 
                         {...register("lastname", { required: "This Field is required" ,minLength : {value : 3 , message : "Must be atleast 3 characters"},  
                         pattern : { value: /^[A-Za-z\s]+$/, message : "only Letter Allowed"}
                         })}
@@ -60,17 +60,17 @@ function Signup() {
                           
                          <div>
 
-                          <input type="email"  className="outline-none border border-slate-300 my-2 py-1 px-1 w-full" placeholder="Eamil" 
+                          <input type="email"  className="outline-none border border-slate-300 my-4 py-1 px-1 w-full" placeholder="Eamil" 
                         {...register("email", { required: "this field is required",
                           pattern: {value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message:"enter valid email"}
                          })}
                         />
-                         {errors.email && <span className="text-red-600 text-sm">{errors.email?.message}</span>}
+                         {errors.email && <span className="text-red-600 text-sm ">{errors.email?.message}</span>}
                          </div>
                                                            {/* password */}
 
                     <div>
-                          <input type="password" className="outline-none border border-slate-300 my-2 py-1 px-1 w-full " placeholder="Password" 
+                          <input type="password" className="outline-none border border-slate-300 my-4 py-1 px-1 w-full " placeholder="Password" 
                          
                           {...register("password", { required: "This field required",
                             minLength : {value :6 ,message:"must be min 6 character" },
@@ -81,7 +81,7 @@ function Signup() {
                              {errors.password && <span className="text-red-600 text-sm m h-4">{errors.password?.message}</span>}
                     </div>
                     </div>
-                    <div className="flex items-center justify-between gap-8">
+                    <div className="flex items-center justify-between gap-8 my-4">
                           <div className="flex gap-1">
                                <input type="checkbox" />
                                <p className="font-serif text-nowrap">Remember Me</p>  
