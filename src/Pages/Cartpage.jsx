@@ -1,26 +1,28 @@
 import { useContext } from 'react';
 import { CartContext } from '../Context/Cartcontext';
-import { Plus, Minus, Trash2 } from 'lucide-react';
+import { Plus, Minus, Trash2, LoaderCircle } from 'lucide-react';
 import Button from '../Components/Button';
 
 function Cartpage() {
   const {
-    cartitem,
+    cart,
     deletfromCart,
     decQty,
     incQty,
     totalprice,
   } = useContext(CartContext);
 
-console.log(cartitem);
+console.log(cart?.map((item)=> item));
 
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 sm:px-6 lg:px-8  md:py-10">
       <div className="max-w-7xl mx-auto">
-        <h1 className='text-2xl  border-b  mb-4'>Products Cart ({cartitem.length})</h1>
+        <div className='flex justify-between items-center'>
+              <h1 className='text-2xl  border-b  mb-4'>Products Cart ({cart.length})</h1>
+        </div>
         <div>
-          {cartitem.length === 0 ? (
+          {cart.length === 0 ? (
             <div>
               <h1>No Itme In Cart</h1>
             </div>
@@ -28,26 +30,26 @@ console.log(cartitem);
             <div className='grid grid-cols-1 lg:grid-cols-3 lg:gap-10'>
               <div className='col-span-2'>
                 <div>
-                  {cartitem.map((item) => (
-                    <div key={item.product?.id} className='flex flex-col justify-between gap-3 p-1 sm:flex-row border-b-2 mb-2'>
+                  {cart.map((item) => (
+                    <div key={item?.id} className='flex flex-col justify-between gap-3 p-1 sm:flex-row border-b-2 mb-2'>
                       <div className='flex items-center gap-5'>
                         <div>
-                          <img src={item.product?.images[0]} alt="" className='w-24 h-24' />
+                          <img src={item?.products?.images[0]} alt="" className='w-24 h-24' />
                         </div>
                         <div className='flex-1 flex-col'>
-                          <h1>{item.product?.category}</h1>
-                          <h1>{item.product?.name}</h1>
-                          <h1>$ {item.product?.price}</h1>
+                          <h1>{item?.products?.category}</h1>
+                          <h1>{item?.products?.name}</h1>
+                          <h1>$ {item?.products?.price}</h1>
                         </div>
                       </div>
                       <div className='flex items-center justify-between gap-10 py-3 p-3'>
                         <div className='flex items-center gap-3 border border-gray-600 py-1 px-2'>
-                          <button onClick={() => decQty(item.id)}><Minus size={15} /></button>
-                          <p>{item.product?.Quantity}</p>
-                          <button onClick={() => incQty(item.id)}><Plus size={15} /></button>
+                          <button onClick={() => decQty(item.products?.id)}><Minus size={15} /></button>
+                          <p>{item?.quantity}</p>
+                          <button onClick={() => incQty(item.products?.id)}><Plus size={15} /></button>
                         </div>
                         <div>
-                          <button onClick={() => deletfromCart(item.id)}><Trash2 /></button>
+                          <button onClick={() => deletfromCart(item.products?.id)}><Trash2 /></button>
                         </div>
                       </div>
                     </div>
