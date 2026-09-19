@@ -12,7 +12,7 @@ function Pagination() {
                 <div className='border border-gray-500 flex gap-4 '>
                   <button className='px-2' onClick={()=> setPage((prev)=> prev - 1)}>
                           <Minus size={14}
-                        disabled={page === 0 ? true : false}
+                        disabled={page === 1 ? true : false}
                           />
                   </button>
                   <p>
