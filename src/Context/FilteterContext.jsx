@@ -16,8 +16,9 @@ export default function FilterProvider({ children }) {
   const { data, isPending, error } = useQuery({
     queryKey: ["Products",page],
     queryFn:()=>  getProducts(page,limit),
-    keepPreviousDara:true
+    keepPreviousData: true
   });
+
 
 
 
