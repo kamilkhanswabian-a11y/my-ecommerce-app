@@ -39,33 +39,29 @@ const LOGOS = [
 
 function LogoMarquee() {
   // Duplicate list to guarantee seamless infinite looping
-  const marqueeLogos = [...LOGOS, ...LOGOS];
+  const marqueeLogos = [...LOGOS, ...LOGOS ,...LOGOS];
 
   return (
-    <div className="w-full bg-white py-12 flex flex-col items-center overflow-hidden">
+    <div className="w-full bg-white py-12 flex flex-col items-center overflow-hidden border-b-[0.4px]">
       
-      {/* Optional Title */}
-      <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-8">
-        Trusted by developers worldwide
-      </p>
-
+      
       {/* Marquee Wrapper with Gradient Mask Edges */}
       <div className="relative w-full max-w-6xl overflow-hidden ">
         
         {/* Animated Track */}
         <motion.div
           className="flex w-max items-center gap-12"
-          animate={{ x: ['0%', '-50%'] }}
+          animate={{ x: ['0%', '-40%'] }}
           transition={{
             ease: 'linear',
-            duration: 30, // Adjust speed (higher = slower)
+            duration: 70, // Adjust speed (higher = slower)
             repeat: Infinity,
           }}
         >
           {marqueeLogos.map((item, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 mx-3 px-10 py-1 rounded-2xl bg-transparent  border border-slate-800/80 "
+              className="bg-black/40 flex items-center gap-3 mx-10 px-16 py-0.5 "
             >
               <img
                 src={item.logo}
