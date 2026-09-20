@@ -1,10 +1,10 @@
 import { Minus, Plus } from 'lucide-react'
-import React, { useContext } from 'react'
+import  { useContext } from 'react'
 import { FilterContext } from '../Context/FilteterContext'
 
 function Pagination() {
     const {page,setPage} = useContext(FilterContext)
-    console.log(page,setPage);
+  
     
   return (
     <div>
