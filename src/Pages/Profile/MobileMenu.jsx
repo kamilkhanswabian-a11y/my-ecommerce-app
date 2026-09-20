@@ -39,6 +39,17 @@ function MobileMenu() {
 
     const [mobileMenu, setMobileMenu] = useState(false);
     const [activeTab, setActiveTab] = useState("overview");
+
+const { signOut } = useContext(AuthContext);
+
+  async function handleLogout() {
+    try {
+      await signOut();
+      setMobileMenu(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
     return (
         <div>
             {/* Only Visible in Mobile  */}
@@ -79,6 +90,13 @@ function MobileMenu() {
                                 </button>
                             )
                         })}
+<button
+              onClick={handleLogout}
+              className="flex items-center gap-3 w-full py-4 px-3 transition duration-100 lg:hidden hover:bg-gray-50 border-t border-slate-200 mt-4 text-red-600 font-semibold"
+            >
+              <LogOut size={20} />
+              <p>Log Out</p>
+            </button>
                     </div>
                 )}
             </div>
